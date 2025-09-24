@@ -1,0 +1,41 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Print_HolaMundo
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "platzi/curso-github-actions" ]
+  pull_request:
+    branches: [ "platzi/curso-github-actions" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "run-java"
+  run-java:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # 1. Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      # 2. Instalar Java (puedes cambiar la versión si lo deseas)
+      - name: Configurar Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      # 3. Compilar HolaMundo.java
+      - name: Compilar HolaMundo.java
+        run: javac HolaMundo.java
+
+      # 4. Ejecutar HolaMundo
+      - name: Ejecutar HolaMundo
+        run: java HolaMundo
