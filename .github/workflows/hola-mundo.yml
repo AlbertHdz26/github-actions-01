@@ -2,17 +2,7 @@
 
 name: WF Hola Mundo en Java
 run-name: Estoy aprendiendo Github Actions!
-
-# Controls when the workflow will run
-on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
-  push:
-    branches: [ "AlbertHdz26/github-actions-01" ]
-  pull_request:
-    branches: [ "AlbertHdz26/github-actions-01" ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+on: [push]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -24,8 +14,10 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    
       # 1. Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       # 2. Instalar Java (puedes cambiar la versión si lo deseas)
       - name: Configurar Java
