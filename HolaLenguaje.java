@@ -11,8 +11,9 @@ public class HolaLenguaje {
 
         // Si no se encuentra, establece un valores por defectos a la variables        
 		username = Optional.ofNullable(username).orElse("Usuario"); 
-        language = Optional.ofNullable(username).orElse("Java"); 
+        language = Optional.ofNullable(language).orElse("Java"); 
 
         System.out.println("¡Hola "+ username + ", desde GitHub Actions, mi lenguaje de programacion favorito es "+language);
     }
 }
+
