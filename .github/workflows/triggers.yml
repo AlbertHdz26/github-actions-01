@@ -1,2 +1,89 @@
-name: Triggers test
-on: workflow_dispatch
+name: Triggers
+run-name: Aprendiendo a usar triggers!
+
+on: 
+  #On push
+  push:
+    branches:
+      - 'main'
+      - 'github-actions-01'
+
+  #On pull_request 
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches:
+      - 'main'
+      - 'github-actions-01'
+    paths:
+      - '**.java'
+
+  #On issues 
+  issues:
+    types:
+      - labeled
+
+  #On workflow_dispatch 
+  workflow_dispatch:
+    inputs:
+      lenguaje_favorito:
+        description: 'Lenguaje de programacion favorito'
+        default: Java
+        required: true
+        type: choice
+        options:
+        - Java
+        - JavaScript
+        - Python
+      nombre:
+        description: 'Tu nombre'
+        required: true
+        default: Alberto
+        type: string
+
+   #On schedule    
+  schedule:
+    - cron:  '15 22 * * *'
+  
+# Jobs
+jobs:
+
+  # Job called "hola-mundo-manual"
+  hola-mundo-manual:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Definir nombre
+        run: echo "USERNAME=${{ inputs.nombre }}" >> $GITHUB_ENV
+      - name: Definir lenguaje
+        run: echo "LANGUAGE=${{ inputs.lenguaje_favorito }}" >> $GITHUB_ENV
+      - name: Configurar Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: oracle
+          java-version: 17
+          java-package: jdk
+      - name: Compilar HolaLenguaje.java
+        run: javac HolaLenguaje.java
+      - name: Ejecutar HolaLenguaje
+        run: java HolaLenguaje
+        
+  # Job called "hola-mundo"
+  hola-mundo:
+    if: ${{ github.event_name != 'workflow_dispatch' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Definir variable
+        run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
+      - name: Configurar Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: oracle
+          java-version: 17
+          java-package: jdk
+      - name: Compilar HolaMundo.java
+        run: javac HolaMundo.java
+      - name: Ejecutar HolaMundo
+        run: java HolaMundo
