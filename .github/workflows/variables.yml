@@ -28,6 +28,6 @@ jobs:
     
     steps:
       - name: Saludar con variables
-         run: echo "$SALUDO, $NOMBRE ${{ vars.APELLIDOS }}. tu contraseña es ${{ secrets.CONTRASENA }}"
+        run: echo "$SALUDO, $NOMBRE ${{ vars.APELLIDOS }}. tu contraseña es ${{ secrets.CONTRASENA }}"
         env:
           NOMBRE: Alberto
