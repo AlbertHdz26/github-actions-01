@@ -1,5 +1,14 @@
+import java.util.Optional; 
+
 public class HolaMundo {
     public static void main(String[] args) {
-        System.out.println("¡Hola, GitHub Actions!");
+
+        // Obtiene la variable de entorno "USERNAME"        
+		String username = System.getenv("USERNAME");  
+
+        // Si no se encuentra, establece un valor por defecto: Usuario        
+		username = Optional.ofNullable(username).orElse("Usuario"); 
+
+        System.out.println("¡Hola "+ username + ", desde GitHub Actions!");
     }
 }
