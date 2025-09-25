@@ -1,15 +1,15 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Hola_Mundo_en_Java
+name: WF Hola Mundo en Java
 run-name: Estoy aprendiendo Github Actions!
 
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "platzi/curso-github-actions" ]
+    branches: [ "AlbertHdz26/github-actions-01" ]
   pull_request:
-    branches: [ "platzi/curso-github-actions" ]
+    branches: [ "AlbertHdz26/github-actions-01" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
