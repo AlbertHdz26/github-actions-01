@@ -27,7 +27,7 @@ on:
     inputs:
       lenguaje_favorito:
         description: 'Lenguaje de programacion favorito'
-        default: Java
+        default: 'Java'
         required: true
         type: choice
         options:
@@ -37,7 +37,7 @@ on:
       nombre:
         description: 'Tu nombre'
         required: true
-        default: Alberto
+        default: 'Alberto'
         type: string
 
    #On schedule    
