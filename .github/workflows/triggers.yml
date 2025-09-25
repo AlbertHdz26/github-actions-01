@@ -40,7 +40,7 @@ on:
         default: 'Alberto'
         type: string
 
-   #On schedule    
+  #On schedule    
   schedule:
     - cron:  '15 22 * * *'
   
