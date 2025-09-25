@@ -27,10 +27,14 @@ jobs:
           java-version: 17
           java-package: jdk
 
-      # 3. Compilar HolaMundo.java
+      # 3. Definir variable de entorno
+      - name: Definir variable
+        run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
+      
+      # 4. Compilar HolaMundo.java
       - name: Compilar HolaMundo.java
         run: javac HolaMundo.java
 
-      # 4. Ejecutar HolaMundo
+      # 5. Ejecutar HolaMundo
       - name: Ejecutar HolaMundo
         run: java HolaMundo
