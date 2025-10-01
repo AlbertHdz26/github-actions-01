@@ -21,7 +21,7 @@ jobs:
 
       # 2. Instalar Java (puedes cambiar la versión si lo deseas)
       - name: Configurar Java
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: oracle
           java-version: 17
