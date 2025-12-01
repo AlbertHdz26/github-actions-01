@@ -17,7 +17,7 @@ jobs:
     
       # 1. Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       # 2. Instalar Java (puedes cambiar la versión si lo deseas)
       - name: Configurar Java
